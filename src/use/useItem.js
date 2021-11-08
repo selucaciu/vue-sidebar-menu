@@ -53,15 +53,21 @@ export default function useItem (props) {
       if (props.item.disabled) return
     }
 
-    emitMobileItem(event, event.currentTarget.parentElement)
+    if (!props.item.lazy || (props.item.lazy && props.item.child.length > 0)) {
+      emitMobileItem(event, event.currentTarget.parentElement)
+    }
+
+    emitItemClick(event, props.item)
+
+    if (props.item.lazy && props.item.child.length === 0) {
+      return
+    }
 
     if (hasChild.value) {
       if (!props.item.href || active.value) {
         show.value = !show.value
       }
     }
-
-    emitItemClick(event, props.item)
   }
 
   const onMouseOver = (event) => {
