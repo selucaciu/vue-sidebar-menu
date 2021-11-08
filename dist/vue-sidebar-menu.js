@@ -521,7 +521,7 @@
       }
     });
     var hasChild = vue.computed(function () {
-      return !!(props.item.child && props.item.child.length > 0);
+      return !!(props.item.child && (props.item.child.length > 0 || props.item.lazy));
     });
     var linkClass = vue.computed(function () {
       return ['vsm--link', "vsm--link_level-".concat(props.level), {

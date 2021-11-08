@@ -517,7 +517,7 @@ function useItem(props) {
     }
   });
   var hasChild = computed(function () {
-    return !!(props.item.child && props.item.child.length > 0);
+    return !!(props.item.child && (props.item.child.length > 0 || props.item.lazy));
   });
   var linkClass = computed(function () {
     return ['vsm--link', "vsm--link_level-".concat(props.level), {

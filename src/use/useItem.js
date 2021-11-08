@@ -176,7 +176,7 @@ export default function useItem (props) {
   })
 
   const hasChild = computed(() => {
-    return !!(props.item.child && props.item.child.length > 0)
+    return !!(props.item.child && (props.item.child.length > 0 || props.item.lazy))
   })
 
   const linkClass = computed(() => {
