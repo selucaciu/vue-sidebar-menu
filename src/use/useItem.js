@@ -8,6 +8,7 @@ export default function useItem (props) {
   const router = getCurrentInstance().appContext.config.globalProperties.$router
   const sidebarProps = inject('vsm-props')
   const emitItemClick = inject('emitItemClick')
+  const emitItemMouseEnter = inject('emitItemMouseEnter')
   const emitScrollUpdate = inject('emitScrollUpdate')
   const { isCollapsed, currentRoute, mobileItem, setMobileItem, unsetMobileItem, mobileItemTimeout } = useMenu(sidebarProps)
 
@@ -86,6 +87,13 @@ export default function useItem (props) {
     if (isMobileItem.value && ((sidebarProps.disableHover && hasChild.value) || !sidebarProps.disableHover)) {
       if (mobileItemTimeout.value) clearTimeout(mobileItemTimeout.value)
     }
+
+    emitItemMouseEnter(event, props.item)
+
+    if (props.item.lazy && props.item.child.length === 0) {
+      return
+    }
+
     if (!sidebarProps.disableHover) {
       emitMobileItem(event, event.currentTarget)
     }

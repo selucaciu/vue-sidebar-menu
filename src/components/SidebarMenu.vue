@@ -107,6 +107,9 @@ export default {
     'item-click' (event, item) {
       return !!(event && item)
     },
+    'item-mouse-enter' (event, item) {
+      return !!(event && item)
+    },
     'update:collapsed' (collapsed) {
       return !!(typeof collapsed === 'boolean')
     }
@@ -122,11 +125,13 @@ export default {
       sidebarClass,
       onToggleClick,
       onItemClick,
+      onItemMouseEnter,
       onRouteChange,
       unsetMobileItem
     } = useMenu(props, context)
 
     provide('emitItemClick', onItemClick)
+    provide('emitItemMouseEnter', onItemMouseEnter)
     provide('emitScrollUpdate')
     provide('onRouteChange', onRouteChange)
 

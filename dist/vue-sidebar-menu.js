@@ -178,6 +178,10 @@
       context.emit('item-click', event, item);
     };
 
+    var onItemMouseEnter = function onItemMouseEnter(event, item) {
+      context.emit('item-mouse-enter', event, item);
+    };
+
     var onRouteChange = function onRouteChange() {
       currentRoute.value = window.location.pathname + window.location.search + window.location.hash;
     };
@@ -249,6 +253,7 @@
       currentRoute: currentRoute,
       onToggleClick: onToggleClick,
       onItemClick: onItemClick,
+      onItemMouseEnter: onItemMouseEnter,
       onRouteChange: onRouteChange,
       mobileItem: mobileItem,
       mobileItemStyle: mobileItemStyle,
@@ -334,6 +339,7 @@
     var router = vue.getCurrentInstance().appContext.config.globalProperties.$router;
     var sidebarProps = vue.inject('vsm-props');
     var emitItemClick = vue.inject('emitItemClick');
+    var emitItemMouseEnter = vue.inject('emitItemMouseEnter');
     var emitScrollUpdate = vue.inject('emitScrollUpdate');
 
     var _useMenu = useMenu(sidebarProps),
@@ -417,6 +423,12 @@
 
       if (isMobileItem.value && (sidebarProps.disableHover && hasChild.value || !sidebarProps.disableHover)) {
         if (mobileItemTimeout.value) clearTimeout(mobileItemTimeout.value);
+      }
+
+      emitItemMouseEnter(event, props.item);
+
+      if (props.item.lazy && props.item.child.length === 0) {
+        return;
       }
 
       if (!sidebarProps.disableHover) {
@@ -1077,6 +1089,9 @@
       'item-click' (event, item) {
         return !!(event && item)
       },
+      'item-mouse-enter' (event, item) {
+        return !!(event && item)
+      },
       'update:collapsed' (collapsed) {
         return !!(typeof collapsed === 'boolean')
       }
@@ -1092,11 +1107,13 @@
         sidebarClass,
         onToggleClick,
         onItemClick,
+        onItemMouseEnter,
         onRouteChange,
         unsetMobileItem
       } = useMenu(props, context);
 
       vue.provide('emitItemClick', onItemClick);
+      vue.provide('emitItemMouseEnter', onItemMouseEnter);
       vue.provide('emitScrollUpdate');
       vue.provide('onRouteChange', onRouteChange);
 

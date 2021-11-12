@@ -174,6 +174,10 @@ function useMenu(props, context) {
     context.emit('item-click', event, item);
   };
 
+  var onItemMouseEnter = function onItemMouseEnter(event, item) {
+    context.emit('item-mouse-enter', event, item);
+  };
+
   var onRouteChange = function onRouteChange() {
     currentRoute.value = window.location.pathname + window.location.search + window.location.hash;
   };
@@ -245,6 +249,7 @@ function useMenu(props, context) {
     currentRoute: currentRoute,
     onToggleClick: onToggleClick,
     onItemClick: onItemClick,
+    onItemMouseEnter: onItemMouseEnter,
     onRouteChange: onRouteChange,
     mobileItem: mobileItem,
     mobileItemStyle: mobileItemStyle,
@@ -330,6 +335,7 @@ function useItem(props) {
   var router = getCurrentInstance().appContext.config.globalProperties.$router;
   var sidebarProps = inject('vsm-props');
   var emitItemClick = inject('emitItemClick');
+  var emitItemMouseEnter = inject('emitItemMouseEnter');
   var emitScrollUpdate = inject('emitScrollUpdate');
 
   var _useMenu = useMenu(sidebarProps),
@@ -413,6 +419,12 @@ function useItem(props) {
 
     if (isMobileItem.value && (sidebarProps.disableHover && hasChild.value || !sidebarProps.disableHover)) {
       if (mobileItemTimeout.value) clearTimeout(mobileItemTimeout.value);
+    }
+
+    emitItemMouseEnter(event, props.item);
+
+    if (props.item.lazy && props.item.child.length === 0) {
+      return;
     }
 
     if (!sidebarProps.disableHover) {
@@ -1073,6 +1085,9 @@ var script = {
     'item-click' (event, item) {
       return !!(event && item)
     },
+    'item-mouse-enter' (event, item) {
+      return !!(event && item)
+    },
     'update:collapsed' (collapsed) {
       return !!(typeof collapsed === 'boolean')
     }
@@ -1088,11 +1103,13 @@ var script = {
       sidebarClass,
       onToggleClick,
       onItemClick,
+      onItemMouseEnter,
       onRouteChange,
       unsetMobileItem
     } = useMenu(props, context);
 
     provide('emitItemClick', onItemClick);
+    provide('emitItemMouseEnter', onItemMouseEnter);
     provide('emitScrollUpdate');
     provide('onRouteChange', onRouteChange);
 

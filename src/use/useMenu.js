@@ -85,6 +85,10 @@ export default function useMenu (props, context) {
     context.emit('item-click', event, item)
   }
 
+  const onItemMouseEnter = (event, item) => {
+    context.emit('item-mouse-enter', event, item)
+  }
+
   const onRouteChange = () => {
     currentRoute.value = window.location.pathname + window.location.search + window.location.hash
   }
@@ -140,6 +144,7 @@ export default function useMenu (props, context) {
     currentRoute,
     onToggleClick,
     onItemClick,
+    onItemMouseEnter,
     onRouteChange,
     mobileItem,
     mobileItemStyle,
