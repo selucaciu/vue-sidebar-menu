@@ -41,6 +41,7 @@
       <sidebar-menu-icon
         v-if="item.icon"
         :icon="item.icon"
+        :icon-style="item.iconStyle"
       />
       <div
         class="vsm--title"

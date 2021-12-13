@@ -650,6 +650,10 @@ var script$4 = {
     icon: {
       type: [String, Object],
       default: ''
+    },
+    iconStyle: {
+      type: [String, Object],
+      default: ''
     }
   }
 };
@@ -657,13 +661,14 @@ var script$4 = {
 function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createBlock(resolveDynamicComponent($props.icon.element ? $props.icon.element : 'i'), mergeProps({
     class: ["vsm--icon", typeof $props.icon === 'string' || ($props.icon instanceof String) ? $props.icon : $props.icon.class],
+    style: $props.iconStyle,
     "aria-hidden": "true"
   }, $props.icon.attributes), {
     default: withCtx(() => [
       createTextVNode(toDisplayString($props.icon.text), 1 /* TEXT */)
     ]),
     _: 1 /* STABLE */
-  }, 16 /* FULL_PROPS */, ["class"]))
+  }, 16 /* FULL_PROPS */, ["style", "class"]))
 }
 
 script$4.render = render$4;
@@ -824,8 +829,9 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
                 ($props.item.icon)
                   ? (openBlock(), createBlock(_component_sidebar_menu_icon, {
                       key: 1,
-                      icon: $props.item.icon
-                    }, null, 8 /* PROPS */, ["icon"]))
+                      icon: $props.item.icon,
+                      "icon-style": $props.item.iconStyle
+                    }, null, 8 /* PROPS */, ["icon", "icon-style"]))
                   : createCommentVNode("v-if", true),
                 createVNode("div", {
                   class: ["vsm--title", ($setup.isCollapsed && $setup.isFirstLevel) && !$setup.isMobileItem && 'vsm--title_hidden'],

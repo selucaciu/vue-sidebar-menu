@@ -654,6 +654,10 @@
       icon: {
         type: [String, Object],
         default: ''
+      },
+      iconStyle: {
+        type: [String, Object],
+        default: ''
       }
     }
   };
@@ -661,13 +665,14 @@
   function render$4(_ctx, _cache, $props, $setup, $data, $options) {
     return (vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent($props.icon.element ? $props.icon.element : 'i'), vue.mergeProps({
       class: ["vsm--icon", typeof $props.icon === 'string' || ($props.icon instanceof String) ? $props.icon : $props.icon.class],
+      style: $props.iconStyle,
       "aria-hidden": "true"
     }, $props.icon.attributes), {
       default: vue.withCtx(() => [
         vue.createTextVNode(vue.toDisplayString($props.icon.text), 1 /* TEXT */)
       ]),
       _: 1 /* STABLE */
-    }, 16 /* FULL_PROPS */, ["class"]))
+    }, 16 /* FULL_PROPS */, ["style", "class"]))
   }
 
   script$4.render = render$4;
@@ -828,8 +833,9 @@
                   ($props.item.icon)
                     ? (vue.openBlock(), vue.createBlock(_component_sidebar_menu_icon, {
                         key: 1,
-                        icon: $props.item.icon
-                      }, null, 8 /* PROPS */, ["icon"]))
+                        icon: $props.item.icon,
+                        "icon-style": $props.item.iconStyle
+                      }, null, 8 /* PROPS */, ["icon", "icon-style"]))
                     : vue.createCommentVNode("v-if", true),
                   vue.createVNode("div", {
                     class: ["vsm--title", ($setup.isCollapsed && $setup.isFirstLevel) && !$setup.isMobileItem && 'vsm--title_hidden'],
