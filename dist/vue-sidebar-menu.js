@@ -383,7 +383,7 @@
     var isChildActive = function isChildActive(child) {
       if (!child) return false;
       return child.some(function (item) {
-        return isLinkActive(item) || isChildActive(item.child);
+        return isLinkActive(item) || currentActiveItem.value === props.item.index || isChildActive(item.child);
       });
     };
 
