@@ -81,6 +81,7 @@ var mobileItemRect = reactive({
 });
 var mobileItemTimeout = ref(null);
 var currentRoute = ref(window.location.pathname + window.location.search + window.location.hash);
+var currentActiveItem = ref(null);
 function useMenu(props, context) {
   var id = 0;
 
@@ -247,6 +248,7 @@ function useMenu(props, context) {
     sidebarWidth: sidebarWidth,
     sidebarClass: sidebarClass,
     currentRoute: currentRoute,
+    currentActiveItem: currentActiveItem,
     onToggleClick: onToggleClick,
     onItemClick: onItemClick,
     onItemMouseEnter: onItemMouseEnter,
@@ -341,6 +343,7 @@ function useItem(props) {
   var _useMenu = useMenu(sidebarProps),
       isCollapsed = _useMenu.isCollapsed,
       currentRoute = _useMenu.currentRoute,
+      currentActiveItem = _useMenu.currentActiveItem,
       mobileItem = _useMenu.mobileItem,
       setMobileItem = _useMenu.setMobileItem,
       unsetMobileItem = _useMenu.unsetMobileItem,
@@ -369,7 +372,7 @@ function useItem(props) {
 
       return activeIndex > -1 && includesParams(routerCurrentRoute.params, route.params);
     } else {
-      return item.href === currentRoute.value;
+      return item.href === currentRoute.value || item.index === currentActiveItem.value;
     }
   };
 
@@ -395,6 +398,8 @@ function useItem(props) {
     if (props.item.lazy && props.item.child.length === 0) {
       return;
     }
+
+    currentActiveItem.value = props.item.index;
 
     if (hasChild.value) {
       if (!props.item.href || active.value) {

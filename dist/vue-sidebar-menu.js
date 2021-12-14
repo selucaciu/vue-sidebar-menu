@@ -85,6 +85,7 @@
   });
   var mobileItemTimeout = vue.ref(null);
   var currentRoute = vue.ref(window.location.pathname + window.location.search + window.location.hash);
+  var currentActiveItem = vue.ref(null);
   function useMenu(props, context) {
     var id = 0;
 
@@ -251,6 +252,7 @@
       sidebarWidth: sidebarWidth,
       sidebarClass: sidebarClass,
       currentRoute: currentRoute,
+      currentActiveItem: currentActiveItem,
       onToggleClick: onToggleClick,
       onItemClick: onItemClick,
       onItemMouseEnter: onItemMouseEnter,
@@ -345,6 +347,7 @@
     var _useMenu = useMenu(sidebarProps),
         isCollapsed = _useMenu.isCollapsed,
         currentRoute = _useMenu.currentRoute,
+        currentActiveItem = _useMenu.currentActiveItem,
         mobileItem = _useMenu.mobileItem,
         setMobileItem = _useMenu.setMobileItem,
         unsetMobileItem = _useMenu.unsetMobileItem,
@@ -373,7 +376,7 @@
 
         return activeIndex > -1 && includesParams(routerCurrentRoute.params, route.params);
       } else {
-        return item.href === currentRoute.value;
+        return item.href === currentRoute.value || item.index === currentActiveItem.value;
       }
     };
 
@@ -399,6 +402,8 @@
       if (props.item.lazy && props.item.child.length === 0) {
         return;
       }
+
+      currentActiveItem.value = props.item.index;
 
       if (hasChild.value) {
         if (!props.item.href || active.value) {

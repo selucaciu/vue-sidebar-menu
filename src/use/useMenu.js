@@ -12,6 +12,7 @@ const mobileItemRect = reactive({
 })
 const mobileItemTimeout = ref(null)
 const currentRoute = ref(window.location.pathname + window.location.search + window.location.hash)
+const currentActiveItem = ref(null)
 
 export default function useMenu (props, context) {
   let id = 0
@@ -142,6 +143,7 @@ export default function useMenu (props, context) {
     sidebarWidth,
     sidebarClass,
     currentRoute,
+    currentActiveItem,
     onToggleClick,
     onItemClick,
     onItemMouseEnter,

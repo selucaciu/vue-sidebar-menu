@@ -10,7 +10,7 @@ export default function useItem (props) {
   const emitItemClick = inject('emitItemClick')
   const emitItemMouseEnter = inject('emitItemMouseEnter')
   const emitScrollUpdate = inject('emitScrollUpdate')
-  const { isCollapsed, currentRoute, mobileItem, setMobileItem, unsetMobileItem, mobileItemTimeout } = useMenu(sidebarProps)
+  const { isCollapsed, currentRoute, currentActiveItem, mobileItem, setMobileItem, unsetMobileItem, mobileItemTimeout } = useMenu(sidebarProps)
 
   const itemShow = ref(false)
   const itemHover = ref(false)
@@ -37,7 +37,7 @@ export default function useItem (props) {
       return activeIndex > -1 &&
       includesParams(routerCurrentRoute.params, route.params)
     } else {
-      return item.href === currentRoute.value
+      return item.href === currentRoute.value || item.index === currentActiveItem.value
     }
   }
 
@@ -63,6 +63,8 @@ export default function useItem (props) {
     if (props.item.lazy && props.item.child.length === 0) {
       return
     }
+
+    currentActiveItem.value = props.item.index
 
     if (hasChild.value) {
       if (!props.item.href || active.value) {
