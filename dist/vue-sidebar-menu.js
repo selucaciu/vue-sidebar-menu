@@ -356,10 +356,10 @@
     var itemShow = vue.ref(false);
     var itemHover = vue.ref(false);
     var active = vue.computed(function () {
-      return isLinkActive(props.item) || isChildActive(props.item.child);
+      return isLinkActive(props.item) || isChildActive(props.item.child) || currentActiveItem.value === props.item.index;
     });
     var exactActive = vue.computed(function () {
-      return isLinkActive(props.item, true);
+      return isLinkActive(props.item, true) || currentActiveItem.value === props.item.index;
     });
 
     var isLinkActive = function isLinkActive(item, exact) {
@@ -376,7 +376,7 @@
 
         return activeIndex > -1 && includesParams(routerCurrentRoute.params, route.params);
       } else {
-        return item.href === currentRoute.value || item.index === currentActiveItem.value;
+        return item.href === currentRoute.value;
       }
     };
 

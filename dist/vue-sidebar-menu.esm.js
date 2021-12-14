@@ -352,10 +352,10 @@ function useItem(props) {
   var itemShow = ref(false);
   var itemHover = ref(false);
   var active = computed(function () {
-    return isLinkActive(props.item) || isChildActive(props.item.child);
+    return isLinkActive(props.item) || isChildActive(props.item.child) || currentActiveItem.value === props.item.index;
   });
   var exactActive = computed(function () {
-    return isLinkActive(props.item, true);
+    return isLinkActive(props.item, true) || currentActiveItem.value === props.item.index;
   });
 
   var isLinkActive = function isLinkActive(item, exact) {
@@ -372,7 +372,7 @@ function useItem(props) {
 
       return activeIndex > -1 && includesParams(routerCurrentRoute.params, route.params);
     } else {
-      return item.href === currentRoute.value || item.index === currentActiveItem.value;
+      return item.href === currentRoute.value;
     }
   };
 

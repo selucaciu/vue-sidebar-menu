@@ -16,11 +16,11 @@ export default function useItem (props) {
   const itemHover = ref(false)
 
   const active = computed(() => {
-    return isLinkActive(props.item) || isChildActive(props.item.child)
+    return isLinkActive(props.item) || isChildActive(props.item.child) || currentActiveItem.value === props.item.index
   })
 
   const exactActive = computed(() => {
-    return isLinkActive(props.item, true)
+    return isLinkActive(props.item, true) || currentActiveItem.value === props.item.index
   })
 
   const isLinkActive = (item, exact) => {
@@ -37,7 +37,7 @@ export default function useItem (props) {
       return activeIndex > -1 &&
       includesParams(routerCurrentRoute.params, route.params)
     } else {
-      return item.href === currentRoute.value || item.index === currentActiveItem.value
+      return item.href === currentRoute.value
     }
   }
 
