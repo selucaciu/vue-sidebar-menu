@@ -104,9 +104,11 @@ function useMenu(props, context) {
     return transformItems(props.menu);
   });
   watch(currentActiveItem, function (current, previous) {
-    console.log('active', currentActiveItem.value, props.menu.find(function (item) {
+    var activeItem = props.menu.find(function (item) {
       return item.index === currentActiveItem.value;
-    }));
+    });
+    console.log('active', currentActiveItem.value, activeItem);
+    context.emit('item-select', activeItem);
   });
   var sidebarWidth = computed(function () {
     return isCollapsed.value ? props.widthCollapsed : props.width;
@@ -1106,6 +1108,9 @@ var script = {
     },
     'update:collapsed' (collapsed) {
       return !!(typeof collapsed === 'boolean')
+    },
+    'item-select' (event, item) {
+      return !!(event && item)
     }
   },
   setup (props, context) {
