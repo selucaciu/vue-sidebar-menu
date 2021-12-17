@@ -29,7 +29,7 @@ export default function useMenu (props, context) {
   })
 
   watch(currentActiveItem, (current, previous) => {
-    console.log('active', currentActiveItem.value, props.menu.value.find(item => item.index === currentActiveItem.value))
+    console.log('active', currentActiveItem.value, props.menu.find(item => item.index === currentActiveItem.value))
   })
 
   const sidebarWidth = computed(() => {
