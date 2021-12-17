@@ -1109,8 +1109,8 @@ var script = {
     'update:collapsed' (collapsed) {
       return !!(typeof collapsed === 'boolean')
     },
-    'item-select' (event, item) {
-      return !!(event && item)
+    'item-select' (item) {
+      return !!item
     }
   },
   setup (props, context) {
