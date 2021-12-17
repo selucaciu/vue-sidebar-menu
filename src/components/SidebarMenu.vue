@@ -144,6 +144,7 @@ export default {
     setupActiveWatcher()
 
     const { collapsed } = toRefs(props)
+
     isCollapsed.value = collapsed.value
 
     watch(() => props.collapsed, (currentCollapsed) => {
@@ -151,11 +152,16 @@ export default {
       isCollapsed.value = currentCollapsed
     })
 
+    watch(() => props.menu, () => {
+      if (props.menu.length > 0 && currentActiveItem.value === null) {
+        currentActiveItem.value = props.menu[0].index
+      }
+    })
+
     const router = getCurrentInstance().appContext.config.globalProperties.$router
     if (!router) {
       onMounted(() => {
         window.addEventListener('hashchange', onRouteChange)
-        currentActiveItem.value = computedMenu.value ? computedMenu.value[0].index : null;
       })
       onUnmounted(() => {
         window.removeEventListener('hashchange', onRouteChange)

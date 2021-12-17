@@ -1149,6 +1149,7 @@
       setupActiveWatcher();
 
       const { collapsed } = vue.toRefs(props);
+
       isCollapsed.value = collapsed.value;
 
       vue.watch(() => props.collapsed, (currentCollapsed) => {
@@ -1156,11 +1157,16 @@
         isCollapsed.value = currentCollapsed;
       });
 
+      vue.watch(() => props.menu, () => {
+        if (props.menu.length > 0 && currentActiveItem.value === null) {
+          currentActiveItem.value = props.menu[0].index;
+        }
+      });
+
       const router = vue.getCurrentInstance().appContext.config.globalProperties.$router;
       if (!router) {
         vue.onMounted(() => {
           window.addEventListener('hashchange', onRouteChange);
-          currentActiveItem.value = computedMenu.value ? computedMenu.value[0].index : null;
         });
         vue.onUnmounted(() => {
           window.removeEventListener('hashchange', onRouteChange);
