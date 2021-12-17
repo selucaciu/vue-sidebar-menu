@@ -30,7 +30,22 @@ export default function useMenu (props, context) {
 
   const setupActiveWatcher = () => {
     watch(currentActiveItem, (current, previous) => {
-      const activeItem = computedMenu.value.find(item => item.index === currentActiveItem.value)
+      const searchItem = (items) => {
+        for(item of items) {
+          if(item.index === currentActiveItem.value)
+            return item
+          else if(item.child.length > 0) {
+            const activeItem = searchItem(item.child)
+            if(activeItem)
+              return activeItem
+          }
+        }
+
+        return null
+      }
+
+      const activeItem = searchItem(computedMenu.value)
+      
       console.log('active', currentActiveItem.value, activeItem)
       context.emit('item-select', activeItem)
     })
