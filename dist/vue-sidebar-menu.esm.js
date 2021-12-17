@@ -106,7 +106,7 @@ function useMenu(props, context) {
 
   var setupActiveWatcher = function setupActiveWatcher() {
     watch(currentActiveItem, function (current, previous) {
-      var activeItem = props.menu.find(function (item) {
+      var activeItem = computedMenu.value.find(function (item) {
         return item.index === currentActiveItem.value;
       });
       console.log('active', currentActiveItem.value, activeItem);
