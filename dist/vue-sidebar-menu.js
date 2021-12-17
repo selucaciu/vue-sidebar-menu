@@ -107,13 +107,17 @@
     var computedMenu = vue.computed(function () {
       return transformItems(props.menu);
     });
-    vue.watch(currentActiveItem, function (current, previous) {
-      var activeItem = props.menu.find(function (item) {
-        return item.index === currentActiveItem.value;
+
+    var setupActiveWatcher = function setupActiveWatcher() {
+      vue.watch(currentActiveItem, function (current, previous) {
+        var activeItem = props.menu.find(function (item) {
+          return item.index === currentActiveItem.value;
+        });
+        console.log('active', currentActiveItem.value, activeItem);
+        context.emit('item-select', activeItem);
       });
-      console.log('active', currentActiveItem.value, activeItem);
-      context.emit('item-select', activeItem);
-    });
+    };
+
     var sidebarWidth = vue.computed(function () {
       return isCollapsed.value ? props.widthCollapsed : props.width;
     });
@@ -270,6 +274,7 @@
       mobileItemBackgroundStyle: mobileItemBackgroundStyle,
       setMobileItem: setMobileItem,
       unsetMobileItem: unsetMobileItem,
+      setupActiveWatcher: setupActiveWatcher,
       mobileItemTimeout: mobileItemTimeout
     };
   }
@@ -1130,7 +1135,8 @@
         onItemClick,
         onItemMouseEnter,
         onRouteChange,
-        unsetMobileItem
+        unsetMobileItem,
+        setupActiveWatcher
       } = useMenu(props, context);
 
       vue.provide('emitItemClick', onItemClick);
@@ -1138,6 +1144,9 @@
       vue.provide('emitScrollUpdate');
       vue.provide('onRouteChange', onRouteChange);
 
+
+      setupActiveWatcher();
+      
       const { collapsed } = vue.toRefs(props);
       isCollapsed.value = collapsed.value;
 

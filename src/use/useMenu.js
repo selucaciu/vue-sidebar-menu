@@ -28,11 +28,13 @@ export default function useMenu (props, context) {
     return transformItems(props.menu)
   })
 
-  watch(currentActiveItem, (current, previous) => {
-    const activeItem = props.menu.find(item => item.index === currentActiveItem.value)
-    console.log('active', currentActiveItem.value, activeItem)
-    context.emit('item-select', activeItem)
-  })
+  const setupActiveWatcher = () => {
+    watch(currentActiveItem, (current, previous) => {
+      const activeItem = props.menu.find(item => item.index === currentActiveItem.value)
+      console.log('active', currentActiveItem.value, activeItem)
+      context.emit('item-select', activeItem)
+    })
+  }
 
   const sidebarWidth = computed(() => {
     return isCollapsed.value ? props.widthCollapsed : props.width
@@ -160,6 +162,7 @@ export default function useMenu (props, context) {
     mobileItemBackgroundStyle,
     setMobileItem,
     unsetMobileItem,
+    setupActiveWatcher,
     mobileItemTimeout
   }
 }

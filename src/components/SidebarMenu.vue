@@ -130,7 +130,8 @@ export default {
       onItemClick,
       onItemMouseEnter,
       onRouteChange,
-      unsetMobileItem
+      unsetMobileItem,
+      setupActiveWatcher
     } = useMenu(props, context)
 
     provide('emitItemClick', onItemClick)
@@ -138,6 +139,9 @@ export default {
     provide('emitScrollUpdate')
     provide('onRouteChange', onRouteChange)
 
+
+    setupActiveWatcher()
+    
     const { collapsed } = toRefs(props)
     isCollapsed.value = collapsed.value
 

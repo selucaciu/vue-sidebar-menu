@@ -103,13 +103,17 @@ function useMenu(props, context) {
   var computedMenu = computed(function () {
     return transformItems(props.menu);
   });
-  watch(currentActiveItem, function (current, previous) {
-    var activeItem = props.menu.find(function (item) {
-      return item.index === currentActiveItem.value;
+
+  var setupActiveWatcher = function setupActiveWatcher() {
+    watch(currentActiveItem, function (current, previous) {
+      var activeItem = props.menu.find(function (item) {
+        return item.index === currentActiveItem.value;
+      });
+      console.log('active', currentActiveItem.value, activeItem);
+      context.emit('item-select', activeItem);
     });
-    console.log('active', currentActiveItem.value, activeItem);
-    context.emit('item-select', activeItem);
-  });
+  };
+
   var sidebarWidth = computed(function () {
     return isCollapsed.value ? props.widthCollapsed : props.width;
   });
@@ -266,6 +270,7 @@ function useMenu(props, context) {
     mobileItemBackgroundStyle: mobileItemBackgroundStyle,
     setMobileItem: setMobileItem,
     unsetMobileItem: unsetMobileItem,
+    setupActiveWatcher: setupActiveWatcher,
     mobileItemTimeout: mobileItemTimeout
   };
 }
@@ -1126,7 +1131,8 @@ var script = {
       onItemClick,
       onItemMouseEnter,
       onRouteChange,
-      unsetMobileItem
+      unsetMobileItem,
+      setupActiveWatcher
     } = useMenu(props, context);
 
     provide('emitItemClick', onItemClick);
@@ -1134,6 +1140,9 @@ var script = {
     provide('emitScrollUpdate');
     provide('onRouteChange', onRouteChange);
 
+
+    setupActiveWatcher();
+    
     const { collapsed } = toRefs(props);
     isCollapsed.value = collapsed.value;
 
