@@ -1131,6 +1131,7 @@ var script = {
       onItemClick,
       onItemMouseEnter,
       onRouteChange,
+      currentActiveItem,
       unsetMobileItem,
       setupActiveWatcher
     } = useMenu(props, context);
@@ -1142,7 +1143,7 @@ var script = {
 
 
     setupActiveWatcher();
-    
+
     const { collapsed } = toRefs(props);
     isCollapsed.value = collapsed.value;
 
@@ -1155,6 +1156,7 @@ var script = {
     if (!router) {
       onMounted(() => {
         window.addEventListener('hashchange', onRouteChange);
+        currentActiveItem.value = computedMenu.value ? computedMenu.value[0].index : null;
       });
       onUnmounted(() => {
         window.removeEventListener('hashchange', onRouteChange);

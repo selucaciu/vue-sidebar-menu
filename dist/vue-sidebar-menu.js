@@ -1135,6 +1135,7 @@
         onItemClick,
         onItemMouseEnter,
         onRouteChange,
+        currentActiveItem,
         unsetMobileItem,
         setupActiveWatcher
       } = useMenu(props, context);
@@ -1146,7 +1147,7 @@
 
 
       setupActiveWatcher();
-      
+
       const { collapsed } = vue.toRefs(props);
       isCollapsed.value = collapsed.value;
 
@@ -1159,6 +1160,7 @@
       if (!router) {
         vue.onMounted(() => {
           window.addEventListener('hashchange', onRouteChange);
+          currentActiveItem.value = computedMenu.value ? computedMenu.value[0].index : null;
         });
         vue.onUnmounted(() => {
           window.removeEventListener('hashchange', onRouteChange);
