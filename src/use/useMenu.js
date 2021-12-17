@@ -1,4 +1,4 @@
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 
 const isCollapsed = ref(false)
 const sidebarMenuRef = ref(null)
@@ -27,6 +27,10 @@ export default function useMenu (props, context) {
   const computedMenu = computed(() => {
     return transformItems(props.menu)
   })
+
+  watch(currentActiveItem, (current, previous) => {
+    console.log('active', currentActiveItem.value, props.items.value.find(item => item.index === currentActiveItem.value))
+  });
 
   const sidebarWidth = computed(() => {
     return isCollapsed.value ? props.widthCollapsed : props.width

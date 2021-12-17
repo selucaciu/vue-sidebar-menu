@@ -107,6 +107,11 @@
     var computedMenu = vue.computed(function () {
       return transformItems(props.menu);
     });
+    vue.watch(currentActiveItem, function (current, previous) {
+      console.log('active', currentActiveItem.value, props.items.value.find(function (item) {
+        return item.index === currentActiveItem.value;
+      }));
+    });
     var sidebarWidth = vue.computed(function () {
       return isCollapsed.value ? props.widthCollapsed : props.width;
     });

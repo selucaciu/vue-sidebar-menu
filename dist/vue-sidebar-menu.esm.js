@@ -1,4 +1,4 @@
-import { ref, reactive, computed, getCurrentInstance, inject, resolveComponent, openBlock, createBlock, mergeProps, renderSlot, withCtx, createVNode, resolveDynamicComponent, createTextVNode, toDisplayString, toRefs, watch, toHandlers, Transition, createCommentVNode, Fragment, renderList, provide, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, reactive, computed, watch, getCurrentInstance, inject, resolveComponent, openBlock, createBlock, mergeProps, renderSlot, withCtx, createVNode, resolveDynamicComponent, createTextVNode, toDisplayString, toRefs, toHandlers, Transition, createCommentVNode, Fragment, renderList, provide, onMounted, onUnmounted, nextTick } from 'vue';
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -102,6 +102,11 @@ function useMenu(props, context) {
 
   var computedMenu = computed(function () {
     return transformItems(props.menu);
+  });
+  watch(currentActiveItem, function (current, previous) {
+    console.log('active', currentActiveItem.value, props.items.value.find(function (item) {
+      return item.index === currentActiveItem.value;
+    }));
   });
   var sidebarWidth = computed(function () {
     return isCollapsed.value ? props.widthCollapsed : props.width;
