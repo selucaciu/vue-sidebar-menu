@@ -344,7 +344,7 @@
   }
 
   var activeShow = vue.ref(null);
-  function useItem(props) {
+  function useItem(props, context) {
     var router = vue.getCurrentInstance().appContext.config.globalProperties.$router;
     var sidebarProps = vue.inject('vsm-props');
     var emitItemClick = vue.inject('emitItemClick');
@@ -731,7 +731,7 @@
         default: 1
       }
     },
-    setup (props) {
+    setup (props, context) {
       const sidebarProps = vue.inject('vsm-props');
       const { isCollapsed, mobileItemStyle, mobileItemDropdownStyle, mobileItemBackgroundStyle } = useMenu(sidebarProps);
       const { linkComponentName } = vue.toRefs(sidebarProps);

@@ -340,7 +340,7 @@ function isEquivalentArray(a, b) {
 }
 
 var activeShow = ref(null);
-function useItem(props) {
+function useItem(props, context) {
   var router = getCurrentInstance().appContext.config.globalProperties.$router;
   var sidebarProps = inject('vsm-props');
   var emitItemClick = inject('emitItemClick');
@@ -727,7 +727,7 @@ var script$2 = {
       default: 1
     }
   },
-  setup (props) {
+  setup (props, context) {
     const sidebarProps = inject('vsm-props');
     const { isCollapsed, mobileItemStyle, mobileItemDropdownStyle, mobileItemBackgroundStyle } = useMenu(sidebarProps);
     const { linkComponentName } = toRefs(sidebarProps);
