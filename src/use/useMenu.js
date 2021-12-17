@@ -31,7 +31,7 @@ export default function useMenu (props, context) {
   const setupActiveWatcher = () => {
     watch(currentActiveItem, (current, previous) => {
       const searchItem = (items) => {
-        for(item of items) {
+        for(const item of items) {
           if(item.index === currentActiveItem.value)
             return item
           else if(item.child.length > 0) {

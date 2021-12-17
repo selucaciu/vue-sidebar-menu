@@ -190,7 +190,7 @@
 
           try {
             for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              item = _step.value;
+              var item = _step.value;
               if (item.index === currentActiveItem.value) return item;else if (item.child.length > 0) {
                 var _activeItem = searchItem(item.child);
 
