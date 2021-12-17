@@ -4,7 +4,7 @@ import { activeRecordIndex, isSameRouteLocationParams, includesParams } from './
 
 const activeShow = ref(null)
 
-export default function useItem (props, context) {
+export default function useItem (props) {
   const router = getCurrentInstance().appContext.config.globalProperties.$router
   const sidebarProps = inject('vsm-props')
   const emitItemClick = inject('emitItemClick')
