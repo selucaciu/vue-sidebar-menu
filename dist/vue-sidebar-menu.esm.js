@@ -104,7 +104,7 @@ function useMenu(props, context) {
     return transformItems(props.menu);
   });
   watch(currentActiveItem, function (current, previous) {
-    console.log('active', currentActiveItem.value, props.items.value.find(function (item) {
+    console.log('active', currentActiveItem.value, props.menu.value.find(function (item) {
       return item.index === currentActiveItem.value;
     }));
   });
