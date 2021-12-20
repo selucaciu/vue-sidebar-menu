@@ -178,32 +178,36 @@ function useMenu(props, context) {
     return transformItems(props.menu);
   });
 
+  var searchItem = function searchItem(items) {
+    var _iterator = _createForOfIteratorHelper(items),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var item = _step.value;
+
+        if (item.index === currentActiveItem.value) {
+          return item;
+        } else if (item.child && item.child.length > 0) {
+          var activeItem = searchItem(item.child);
+
+          if (activeItem) {
+            return activeItem;
+          }
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    return null;
+  };
+
   var setupActiveWatcher = function setupActiveWatcher() {
     watch(currentActiveItem, function (current, previous) {
-      var searchItem = function searchItem(items) {
-        var _iterator = _createForOfIteratorHelper(items),
-            _step;
-
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var item = _step.value;
-            if (item.index === currentActiveItem.value) return item;else if (item.child.length > 0) {
-              var _activeItem = searchItem(item.child);
-
-              if (_activeItem) return _activeItem;
-            }
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
-
-        return null;
-      };
-
       var activeItem = searchItem(computedMenu.value);
-      console.log('active', currentActiveItem.value, activeItem);
       context.emit('item-select', activeItem);
     });
   };
@@ -1234,7 +1238,6 @@ var script = {
     provide('emitItemMouseEnter', onItemMouseEnter);
     provide('emitScrollUpdate');
     provide('onRouteChange', onRouteChange);
-
 
     setupActiveWatcher();
 

@@ -32,7 +32,7 @@ export default function useMenu (props, context) {
     for (const item of items) {
       if (item.index === currentActiveItem.value) {
         return item
-      } else if (item.child.length > 0) {
+      } else if (item.child && item.child.length > 0) {
         const activeItem = searchItem(item.child)
         if (activeItem) {
           return activeItem
