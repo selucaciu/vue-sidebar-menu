@@ -28,25 +28,24 @@ export default function useMenu (props, context) {
     return transformItems(props.menu)
   })
 
+  const searchItem = (items) => {
+    for (const item of items) {
+      if (item.index === currentActiveItem.value) {
+        return item
+      } else if (item.child.length > 0) {
+        const activeItem = searchItem(item.child)
+        if (activeItem) {
+          return activeItem
+        }
+      }
+    }
+
+    return null
+  }
+
   const setupActiveWatcher = () => {
     watch(currentActiveItem, (current, previous) => {
-      const searchItem = (items) => {
-        for(const item of items) {
-          if(item.index === currentActiveItem.value)
-            return item
-          else if(item.child.length > 0) {
-            const activeItem = searchItem(item.child)
-            if(activeItem)
-              return activeItem
-          }
-        }
-
-        return null
-      }
-
       const activeItem = searchItem(computedMenu.value)
-      
-      console.log('active', currentActiveItem.value, activeItem)
       context.emit('item-select', activeItem)
     })
   }

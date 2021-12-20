@@ -140,7 +140,6 @@ export default {
     provide('emitScrollUpdate')
     provide('onRouteChange', onRouteChange)
 
-
     setupActiveWatcher()
 
     const { collapsed } = toRefs(props)
