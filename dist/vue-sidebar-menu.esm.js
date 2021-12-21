@@ -208,7 +208,10 @@ function useMenu(props, context) {
   var setupActiveWatcher = function setupActiveWatcher() {
     watch(currentActiveItem, function (current, previous) {
       var activeItem = searchItem(computedMenu.value);
-      context.emit('item-select', activeItem);
+
+      if (activeItem) {
+        context.emit('item-select', activeItem);
+      }
     }, {
       immediate: true
     });
