@@ -47,7 +47,7 @@ export default function useMenu (props, context) {
     watch(currentActiveItem, (current, previous) => {
       const activeItem = searchItem(computedMenu.value)
       context.emit('item-select', activeItem)
-    })
+    }, { immediate: true })
   }
 
   const sidebarWidth = computed(() => {
