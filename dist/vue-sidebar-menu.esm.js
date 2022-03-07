@@ -1,4 +1,4 @@
-import { ref, reactive, computed, watch, getCurrentInstance, inject, resolveComponent, openBlock, createBlock, mergeProps, renderSlot, withCtx, createVNode, resolveDynamicComponent, createTextVNode, toDisplayString, toRefs, toHandlers, Transition, createCommentVNode, Fragment, renderList, provide, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, reactive, computed, watch, getCurrentInstance, inject, nextTick, resolveComponent, openBlock, createBlock, mergeProps, renderSlot, withCtx, createVNode, resolveDynamicComponent, createTextVNode, toDisplayString, toRefs, toHandlers, Transition, createCommentVNode, Fragment, renderList, provide, onMounted, onUnmounted } from 'vue';
 
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -514,13 +514,15 @@ function useItem(props) {
       return;
     }
 
+    var oldShow = show.value;
     currentActiveItem.value = props.item.index;
-
-    if (hasChild.value) {
-      if (!props.item.href || active.value) {
-        show.value = !show.value;
+    nextTick(function () {
+      if (hasChild.value) {
+        if (!props.item.href || active.value) {
+          show.value = !oldShow;
+        }
       }
-    }
+    });
   };
 
   var onMouseOver = function onMouseOver(event) {

@@ -1,7 +1,7 @@
 import { getCurrentInstance, computed, ref, inject } from 'vue'
 import useMenu from './useMenu'
 import { activeRecordIndex, isSameRouteLocationParams, includesParams } from './useRouterLink'
-
+import { nextTick } from 'vue'
 const activeShow = ref(null)
 
 export default function useItem (props) {
@@ -64,13 +64,17 @@ export default function useItem (props) {
       return
     }
 
+    const oldShow = show.value;
     currentActiveItem.value = props.item.index
 
-    if (hasChild.value) {
-      if (!props.item.href || active.value) {
-        show.value = !show.value
+    nextTick(() => {
+      if (hasChild.value) {
+        if (!props.item.href || active.value) {
+          show.value = !oldShow
+        }
       }
-    }
+    })
+
   }
 
   const onMouseOver = (event) => {

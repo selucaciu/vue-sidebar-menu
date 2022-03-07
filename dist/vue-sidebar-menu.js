@@ -518,13 +518,15 @@
         return;
       }
 
+      var oldShow = show.value;
       currentActiveItem.value = props.item.index;
-
-      if (hasChild.value) {
-        if (!props.item.href || active.value) {
-          show.value = !show.value;
+      vue.nextTick(function () {
+        if (hasChild.value) {
+          if (!props.item.href || active.value) {
+            show.value = !oldShow;
+          }
         }
-      }
+      });
     };
 
     var onMouseOver = function onMouseOver(event) {
