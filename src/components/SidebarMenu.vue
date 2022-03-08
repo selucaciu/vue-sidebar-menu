@@ -130,6 +130,9 @@ export default {
       mobileItem,
       mobileItemTimeout,
       currentRoute,
+      mobileItemStyle,
+      mobileItemDropdownStyle,
+      mobileItemBackgroundStyle,
       onToggleClick,
       onItemClick,
       onItemMouseEnter,
@@ -150,6 +153,9 @@ export default {
     provide('currentRoute', currentRoute)
     provide('setMobileItem', setMobileItem)
     provide('unsetMobileItem', unsetMobileItem)
+    provide('mobileItemStyle', mobileItemStyle)
+    provide('mobileItemDropdownStyle', mobileItemDropdownStyle)
+    provide('mobileItemBackgroundStyle', mobileItemBackgroundStyle)
 
     setupActiveWatcher()
 

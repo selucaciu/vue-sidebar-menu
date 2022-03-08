@@ -841,7 +841,9 @@
     setup (props) {
       const sidebarProps = vue.inject('vsm-props');
       const isCollapsed = vue.inject('isCollapsed');
-      const { mobileItemStyle, mobileItemDropdownStyle, mobileItemBackgroundStyle } = useMenu(sidebarProps);
+      const mobileItemStyle = vue.inject('mobileItemStyle');
+      const mobileItemDropdownStyle = vue.inject('mobileItemDropdownStyle');
+      const mobileItemBackgroundStyle = vue.inject('mobileItemBackgroundStyle');
       const { linkComponentName } = vue.toRefs(sidebarProps);
       const {
         active,
@@ -1237,6 +1239,9 @@
         mobileItem,
         mobileItemTimeout,
         currentRoute,
+        mobileItemStyle,
+        mobileItemDropdownStyle,
+        mobileItemBackgroundStyle,
         onToggleClick,
         onItemClick,
         onItemMouseEnter,
@@ -1257,6 +1262,9 @@
       vue.provide('currentRoute', currentRoute);
       vue.provide('setMobileItem', setMobileItem);
       vue.provide('unsetMobileItem', unsetMobileItem);
+      vue.provide('mobileItemStyle', mobileItemStyle);
+      vue.provide('mobileItemDropdownStyle', mobileItemDropdownStyle);
+      vue.provide('mobileItemBackgroundStyle', mobileItemBackgroundStyle);
 
       setupActiveWatcher();
 

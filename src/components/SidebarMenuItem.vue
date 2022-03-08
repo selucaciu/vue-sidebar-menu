@@ -103,7 +103,6 @@
 
 <script>
 import { toRefs, inject, watch } from 'vue'
-import useMenu from '../use/useMenu'
 import useItem from '../use/useItem'
 
 import SidebarMenuLink from './SidebarMenuLink.vue'
@@ -130,7 +129,9 @@ export default {
   setup (props) {
     const sidebarProps = inject('vsm-props')
     const isCollapsed = inject('isCollapsed')
-    const { mobileItemStyle, mobileItemDropdownStyle, mobileItemBackgroundStyle } = useMenu(sidebarProps)
+    const mobileItemStyle = inject('mobileItemStyle')
+    const mobileItemDropdownStyle = inject('mobileItemDropdownStyle')
+    const mobileItemBackgroundStyle = inject('mobileItemBackgroundStyle')
     const { linkComponentName } = toRefs(sidebarProps)
     const {
       active,
