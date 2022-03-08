@@ -455,14 +455,14 @@ function useItem(props) {
   var emitItemMouseEnter = inject('emitItemMouseEnter');
   var emitScrollUpdate = inject('emitScrollUpdate');
   var currentActiveItem = inject('currentActiveItem');
+  var isCollapsed = inject('isCollapsed');
+  var mobileItem = inject('mobileItem');
+  var mobileItemTimeout = inject('mobileItemTimeout');
+  var currentRoute = inject('currentRoute');
 
   var _useMenu = useMenu(sidebarProps),
-      isCollapsed = _useMenu.isCollapsed,
-      currentRoute = _useMenu.currentRoute,
-      mobileItem = _useMenu.mobileItem,
       setMobileItem = _useMenu.setMobileItem,
-      unsetMobileItem = _useMenu.unsetMobileItem,
-      mobileItemTimeout = _useMenu.mobileItemTimeout;
+      unsetMobileItem = _useMenu.unsetMobileItem;
 
   var itemShow = ref(false);
   var itemHover = ref(false);

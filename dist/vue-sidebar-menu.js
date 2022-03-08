@@ -459,14 +459,14 @@
     var emitItemMouseEnter = vue.inject('emitItemMouseEnter');
     var emitScrollUpdate = vue.inject('emitScrollUpdate');
     var currentActiveItem = vue.inject('currentActiveItem');
+    var isCollapsed = vue.inject('isCollapsed');
+    var mobileItem = vue.inject('mobileItem');
+    var mobileItemTimeout = vue.inject('mobileItemTimeout');
+    var currentRoute = vue.inject('currentRoute');
 
     var _useMenu = useMenu(sidebarProps),
-        isCollapsed = _useMenu.isCollapsed,
-        currentRoute = _useMenu.currentRoute,
-        mobileItem = _useMenu.mobileItem,
         setMobileItem = _useMenu.setMobileItem,
-        unsetMobileItem = _useMenu.unsetMobileItem,
-        mobileItemTimeout = _useMenu.mobileItemTimeout;
+        unsetMobileItem = _useMenu.unsetMobileItem;
 
     var itemShow = vue.ref(false);
     var itemHover = vue.ref(false);
