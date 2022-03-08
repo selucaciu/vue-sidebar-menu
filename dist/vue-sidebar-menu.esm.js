@@ -1237,6 +1237,7 @@ var script = {
       onItemClick,
       onItemMouseEnter,
       onRouteChange,
+      setMobileItem,
       unsetMobileItem,
       setupActiveWatcher
     } = useMenu(props, context);
@@ -1250,6 +1251,8 @@ var script = {
     provide('mobileItem', mobileItem);
     provide('mobileItemTimeout', mobileItemTimeout);
     provide('currentRoute', currentRoute);
+    provide('setMobileItem', setMobileItem);
+    provide('unsetMobileItem', unsetMobileItem);
 
     setupActiveWatcher();
 

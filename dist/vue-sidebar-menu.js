@@ -1241,6 +1241,7 @@
         onItemClick,
         onItemMouseEnter,
         onRouteChange,
+        setMobileItem,
         unsetMobileItem,
         setupActiveWatcher
       } = useMenu(props, context);
@@ -1254,6 +1255,8 @@
       vue.provide('mobileItem', mobileItem);
       vue.provide('mobileItemTimeout', mobileItemTimeout);
       vue.provide('currentRoute', currentRoute);
+      vue.provide('setMobileItem', setMobileItem);
+      vue.provide('unsetMobileItem', unsetMobileItem);
 
       setupActiveWatcher();
 
