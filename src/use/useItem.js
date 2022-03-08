@@ -1,5 +1,4 @@
 import { getCurrentInstance, computed, ref, inject, nextTick } from 'vue'
-import useMenu from './useMenu'
 import { activeRecordIndex, isSameRouteLocationParams, includesParams } from './useRouterLink'
 
 export default function useItem (props) {
