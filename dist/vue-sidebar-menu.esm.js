@@ -459,11 +459,8 @@ function useItem(props) {
   var mobileItem = inject('mobileItem');
   var mobileItemTimeout = inject('mobileItemTimeout');
   var currentRoute = inject('currentRoute');
-
-  var _useMenu = useMenu(sidebarProps),
-      setMobileItem = _useMenu.setMobileItem,
-      unsetMobileItem = _useMenu.unsetMobileItem;
-
+  var setMobileItem = inject('setMobileItem');
+  var unsetMobileItem = inject('unsetMobileItem');
   var itemShow = ref(false);
   var itemHover = ref(false);
   var active = computed(function () {

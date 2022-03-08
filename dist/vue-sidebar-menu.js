@@ -463,11 +463,8 @@
     var mobileItem = vue.inject('mobileItem');
     var mobileItemTimeout = vue.inject('mobileItemTimeout');
     var currentRoute = vue.inject('currentRoute');
-
-    var _useMenu = useMenu(sidebarProps),
-        setMobileItem = _useMenu.setMobileItem,
-        unsetMobileItem = _useMenu.unsetMobileItem;
-
+    var setMobileItem = vue.inject('setMobileItem');
+    var unsetMobileItem = vue.inject('unsetMobileItem');
     var itemShow = vue.ref(false);
     var itemHover = vue.ref(false);
     var active = vue.computed(function () {

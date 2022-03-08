@@ -14,8 +14,9 @@ export default function useItem (props) {
   const mobileItem = inject('mobileItem')
   const mobileItemTimeout = inject('mobileItemTimeout')
   const currentRoute = inject('currentRoute')
+  const setMobileItem = inject('setMobileItem')
+  const unsetMobileItem = inject('unsetMobileItem')
 
-  const { setMobileItem, unsetMobileItem } = useMenu(sidebarProps)
   const itemShow = ref(false)
   const itemHover = ref(false)
 
