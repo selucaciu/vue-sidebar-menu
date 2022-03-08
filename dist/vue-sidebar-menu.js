@@ -451,8 +451,8 @@
     }) : a.length === 1 && a[0] === b;
   }
 
-  var activeShow = vue.ref(null);
   function useItem(props) {
+    var activeShow = vue.ref(null);
     var router = vue.getCurrentInstance().appContext.config.globalProperties.$router;
     var sidebarProps = vue.inject('vsm-props');
     var emitItemClick = vue.inject('emitItemClick');

@@ -1,10 +1,9 @@
-import { getCurrentInstance, computed, ref, inject } from 'vue'
+import { getCurrentInstance, computed, ref, inject, nextTick } from 'vue'
 import useMenu from './useMenu'
 import { activeRecordIndex, isSameRouteLocationParams, includesParams } from './useRouterLink'
-import { nextTick } from 'vue'
-const activeShow = ref(null)
 
 export default function useItem (props) {
+  const activeShow = ref(null)
   const router = getCurrentInstance().appContext.config.globalProperties.$router
   const sidebarProps = inject('vsm-props')
   const emitItemClick = inject('emitItemClick')

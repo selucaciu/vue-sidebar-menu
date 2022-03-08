@@ -447,8 +447,8 @@ function isEquivalentArray(a, b) {
   }) : a.length === 1 && a[0] === b;
 }
 
-var activeShow = ref(null);
 function useItem(props) {
+  var activeShow = ref(null);
   var router = getCurrentInstance().appContext.config.globalProperties.$router;
   var sidebarProps = inject('vsm-props');
   var emitItemClick = inject('emitItemClick');
