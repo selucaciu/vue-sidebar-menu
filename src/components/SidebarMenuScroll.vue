@@ -26,13 +26,11 @@
 
 <script>
 import { ref, computed, onMounted, inject, watch, nextTick, provide, onUnmounted } from 'vue'
-import useMenu from '../use/useMenu'
 
 export default {
   name: 'SidebarMenuScroll',
   setup () {
-    const sidebarProps = inject('vsm-props')
-    const { isCollapsed } = useMenu(sidebarProps)
+    const isCollapsed = inject('isCollapsed')
 
     const scrollRef = ref(null)
     const scrollBarRef = ref(null)

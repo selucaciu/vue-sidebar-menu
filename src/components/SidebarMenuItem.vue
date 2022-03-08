@@ -129,7 +129,8 @@ export default {
   },
   setup (props) {
     const sidebarProps = inject('vsm-props')
-    const { isCollapsed, mobileItemStyle, mobileItemDropdownStyle, mobileItemBackgroundStyle } = useMenu(sidebarProps)
+    const isCollapsed = inject('isCollapsed')
+    const { mobileItemStyle, mobileItemDropdownStyle, mobileItemBackgroundStyle } = useMenu(sidebarProps)
     const { linkComponentName } = toRefs(sidebarProps)
     const {
       active,

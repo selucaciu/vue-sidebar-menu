@@ -843,7 +843,8 @@
     },
     setup (props) {
       const sidebarProps = vue.inject('vsm-props');
-      const { isCollapsed, mobileItemStyle, mobileItemDropdownStyle, mobileItemBackgroundStyle } = useMenu(sidebarProps);
+      const isCollapsed = vue.inject('isCollapsed');
+      const { mobileItemStyle, mobileItemDropdownStyle, mobileItemBackgroundStyle } = useMenu(sidebarProps);
       const { linkComponentName } = vue.toRefs(sidebarProps);
       const {
         active,
@@ -1029,8 +1030,7 @@
   var script$1 = {
     name: 'SidebarMenuScroll',
     setup () {
-      const sidebarProps = vue.inject('vsm-props');
-      const { isCollapsed } = useMenu(sidebarProps);
+      const isCollapsed = vue.inject('isCollapsed');
 
       const scrollRef = vue.ref(null);
       const scrollBarRef = vue.ref(null);
