@@ -139,6 +139,7 @@ export default {
     provide('emitItemMouseEnter', onItemMouseEnter)
     provide('emitScrollUpdate')
     provide('onRouteChange', onRouteChange)
+    provide('currentActiveItem', currentActiveItem)
 
     setupActiveWatcher()
 

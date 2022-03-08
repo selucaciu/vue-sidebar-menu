@@ -454,11 +454,11 @@ function useItem(props) {
   var emitItemClick = inject('emitItemClick');
   var emitItemMouseEnter = inject('emitItemMouseEnter');
   var emitScrollUpdate = inject('emitScrollUpdate');
+  var currentActiveItem = inject('currentActiveItem');
 
   var _useMenu = useMenu(sidebarProps),
       isCollapsed = _useMenu.isCollapsed,
       currentRoute = _useMenu.currentRoute,
-      currentActiveItem = _useMenu.currentActiveItem,
       mobileItem = _useMenu.mobileItem,
       setMobileItem = _useMenu.setMobileItem,
       unsetMobileItem = _useMenu.unsetMobileItem,
@@ -1245,6 +1245,7 @@ var script = {
     provide('emitItemMouseEnter', onItemMouseEnter);
     provide('emitScrollUpdate');
     provide('onRouteChange', onRouteChange);
+    provide('currentActiveItem', currentActiveItem);
 
     setupActiveWatcher();
 

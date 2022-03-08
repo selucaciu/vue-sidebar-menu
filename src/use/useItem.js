@@ -9,7 +9,8 @@ export default function useItem (props) {
   const emitItemClick = inject('emitItemClick')
   const emitItemMouseEnter = inject('emitItemMouseEnter')
   const emitScrollUpdate = inject('emitScrollUpdate')
-  const { isCollapsed, currentRoute, currentActiveItem, mobileItem, setMobileItem, unsetMobileItem, mobileItemTimeout } = useMenu(sidebarProps)
+  const currentActiveItem = inject('currentActiveItem')
+  const { isCollapsed, currentRoute, mobileItem, setMobileItem, unsetMobileItem, mobileItemTimeout } = useMenu(sidebarProps)
 
   const itemShow = ref(false)
   const itemHover = ref(false)

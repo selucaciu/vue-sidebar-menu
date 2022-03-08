@@ -458,11 +458,11 @@
     var emitItemClick = vue.inject('emitItemClick');
     var emitItemMouseEnter = vue.inject('emitItemMouseEnter');
     var emitScrollUpdate = vue.inject('emitScrollUpdate');
+    var currentActiveItem = vue.inject('currentActiveItem');
 
     var _useMenu = useMenu(sidebarProps),
         isCollapsed = _useMenu.isCollapsed,
         currentRoute = _useMenu.currentRoute,
-        currentActiveItem = _useMenu.currentActiveItem,
         mobileItem = _useMenu.mobileItem,
         setMobileItem = _useMenu.setMobileItem,
         unsetMobileItem = _useMenu.unsetMobileItem,
@@ -1249,6 +1249,7 @@
       vue.provide('emitItemMouseEnter', onItemMouseEnter);
       vue.provide('emitScrollUpdate');
       vue.provide('onRouteChange', onRouteChange);
+      vue.provide('currentActiveItem', currentActiveItem);
 
       setupActiveWatcher();
 
