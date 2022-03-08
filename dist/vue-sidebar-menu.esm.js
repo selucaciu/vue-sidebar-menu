@@ -1232,11 +1232,14 @@ var script = {
       computedMenu,
       sidebarWidth,
       sidebarClass,
+      currentActiveItem,
+      mobileItem,
+      mobileItemTimeout,
+      currentRoute,
       onToggleClick,
       onItemClick,
       onItemMouseEnter,
       onRouteChange,
-      currentActiveItem,
       unsetMobileItem,
       setupActiveWatcher
     } = useMenu(props, context);
@@ -1246,6 +1249,10 @@ var script = {
     provide('emitScrollUpdate');
     provide('onRouteChange', onRouteChange);
     provide('currentActiveItem', currentActiveItem);
+    provide('isCollapsed', isCollapsed);
+    provide('mobileItem', mobileItem);
+    provide('mobileItemTimeout', mobileItemTimeout);
+    provide('currentRoute', currentRoute);
 
     setupActiveWatcher();
 

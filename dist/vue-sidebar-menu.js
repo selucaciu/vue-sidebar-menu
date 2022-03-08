@@ -1236,11 +1236,14 @@
         computedMenu,
         sidebarWidth,
         sidebarClass,
+        currentActiveItem,
+        mobileItem,
+        mobileItemTimeout,
+        currentRoute,
         onToggleClick,
         onItemClick,
         onItemMouseEnter,
         onRouteChange,
-        currentActiveItem,
         unsetMobileItem,
         setupActiveWatcher
       } = useMenu(props, context);
@@ -1250,6 +1253,10 @@
       vue.provide('emitScrollUpdate');
       vue.provide('onRouteChange', onRouteChange);
       vue.provide('currentActiveItem', currentActiveItem);
+      vue.provide('isCollapsed', isCollapsed);
+      vue.provide('mobileItem', mobileItem);
+      vue.provide('mobileItemTimeout', mobileItemTimeout);
+      vue.provide('currentRoute', currentRoute);
 
       setupActiveWatcher();
 
