@@ -1,20 +1,20 @@
 import { ref, reactive, computed, watch } from 'vue'
 
-const isCollapsed = ref(false)
-const sidebarMenuRef = ref(null)
-const mobileItem = ref(null)
-const mobileItemRect = reactive({
-  top: 0,
-  height: 0,
-  padding: '',
-  maxHeight: 0,
-  maxWidth: 0
-})
-const mobileItemTimeout = ref(null)
-const currentRoute = ref(window.location.pathname + window.location.search + window.location.hash)
-const currentActiveItem = ref(null)
-
 export default function useMenu (props, context) {
+  const isCollapsed = ref(false)
+  const sidebarMenuRef = ref(null)
+  const mobileItem = ref(null)
+  const mobileItemRect = reactive({
+    top: 0,
+    height: 0,
+    padding: '',
+    maxHeight: 0,
+    maxWidth: 0
+  })
+  const mobileItemTimeout = ref(null)
+  const currentRoute = ref(window.location.pathname + window.location.search + window.location.hash)
+  const currentActiveItem = ref(null)
+
   let id = 0
   function transformItems (items) {
     return items.map(item => {

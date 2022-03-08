@@ -64,7 +64,7 @@ export default function useItem (props) {
       return
     }
 
-    const oldShow = show.value;
+    const oldShow = show.value
     currentActiveItem.value = props.item.index
 
     nextTick(() => {
@@ -74,7 +74,6 @@ export default function useItem (props) {
         }
       }
     })
-
   }
 
   const onMouseOver = (event) => {

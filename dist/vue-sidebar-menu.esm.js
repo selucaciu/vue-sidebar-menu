@@ -143,20 +143,20 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
   };
 }
 
-var isCollapsed = ref(false);
-var sidebarMenuRef = ref(null);
-var mobileItem = ref(null);
-var mobileItemRect = reactive({
-  top: 0,
-  height: 0,
-  padding: '',
-  maxHeight: 0,
-  maxWidth: 0
-});
-var mobileItemTimeout = ref(null);
-var currentRoute = ref(window.location.pathname + window.location.search + window.location.hash);
-var currentActiveItem = ref(null);
 function useMenu(props, context) {
+  var isCollapsed = ref(false);
+  var sidebarMenuRef = ref(null);
+  var mobileItem = ref(null);
+  var mobileItemRect = reactive({
+    top: 0,
+    height: 0,
+    padding: '',
+    maxHeight: 0,
+    maxWidth: 0
+  });
+  var mobileItemTimeout = ref(null);
+  var currentRoute = ref(window.location.pathname + window.location.search + window.location.hash);
+  var currentActiveItem = ref(null);
   var id = 0;
 
   function transformItems(items) {

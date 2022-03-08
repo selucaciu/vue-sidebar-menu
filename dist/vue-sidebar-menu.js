@@ -147,20 +147,20 @@
     };
   }
 
-  var isCollapsed = vue.ref(false);
-  var sidebarMenuRef = vue.ref(null);
-  var mobileItem = vue.ref(null);
-  var mobileItemRect = vue.reactive({
-    top: 0,
-    height: 0,
-    padding: '',
-    maxHeight: 0,
-    maxWidth: 0
-  });
-  var mobileItemTimeout = vue.ref(null);
-  var currentRoute = vue.ref(window.location.pathname + window.location.search + window.location.hash);
-  var currentActiveItem = vue.ref(null);
   function useMenu(props, context) {
+    var isCollapsed = vue.ref(false);
+    var sidebarMenuRef = vue.ref(null);
+    var mobileItem = vue.ref(null);
+    var mobileItemRect = vue.reactive({
+      top: 0,
+      height: 0,
+      padding: '',
+      maxHeight: 0,
+      maxWidth: 0
+    });
+    var mobileItemTimeout = vue.ref(null);
+    var currentRoute = vue.ref(window.location.pathname + window.location.search + window.location.hash);
+    var currentActiveItem = vue.ref(null);
     var id = 0;
 
     function transformItems(items) {
