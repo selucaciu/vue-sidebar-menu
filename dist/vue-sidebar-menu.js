@@ -1279,7 +1279,10 @@
 
       vue.watch(() => props.menu, () => {
         if (props.menu.length > 0 && currentActiveItem.value === null) {
-          currentActiveItem.value = props.menu[0].index;
+          const firstMenuItem = props.menu.find(item => item.type === 'item');
+          if (firstMenuItem) {
+            currentActiveItem.value = firstMenuItem.index;
+          }
         }
       });
 
