@@ -1,48 +1,48 @@
-$base-bg: #fff;
-$item-color: #262626;
-$icon-bg: #bbc5d6;
-$icon-active-color: #fff;
-$icon-active-bg: $item-color;
-$item-hover-bg: rgba(darken($base-bg, 5%), 0.5);
-$dropdown-bg: #e3e3e3;
+$sidebar_base_bg: #fff;
+$sidebar_item_color: #262626;
+$sidebar_icon_bg: #bbc5d6;
+$sidebar_icon_active_color: #fff;
+$sidebar_icon_active_bg: $sidebar_item_color;
+$sidebar_item_hover_bg: rgba(darken($sidebar_base_bg, 5%), 0.5);
+$sidebar_dropdown_bg: #e3e3e3;
 
 .v-sidebar-menu.vsm_white-theme {
-  background-color: $base-bg;
+  background-color: $sidebar_base_bg;
   .vsm--link {
-    color: $item-color;
+    color: $sidebar_item_color;
     &_active {
-      color: $item-active-color;
-      background-color: $item-active-bg;
+      color: $sidebar_item_active_color;
+      background-color: $sidebar_item_active_bg;
     }
     &_level-1 {
       &.vsm--link_active {
-        box-shadow: 3px 0px 0px 0px $primary-color inset;
+        box-shadow: 3px 0px 0px 0px $sidebar_primary_color inset;
         & .vsm--icon {
-          color: $icon-active-color;
-          background-color: $icon-active-bg;
+          color: $sidebar_icon_active_color;
+          background-color: $sidebar_icon_active_bg;
         }
       }
       & .vsm--icon {
-        background-color: $icon-bg;
+        background-color: $sidebar_icon_bg;
       }
     }
     &_hover {
-      color: $item-hover-color;
-      background-color: $item-hover-bg;
+      color: $sidebar_item_hover_color;
+      background-color: $sidebar_item_hover_bg;
     }
     &_mobile {
-      color: $mobile-item-color;
+      color: $sidebar_mobile_item_color;
     }
   }
 
   &.vsm_expanded {
     .vsm--link_level-1 {
       &.vsm--link_open {
-        color: $item-open-color;
-        background-color: $item-open-bg;
+        color: $sidebar_item_open_color;
+        background-color: $sidebar_item_open_bg;
         & .vsm--icon {
-          color: $icon-open-color;
-          background-color: $icon-open-bg;
+          color: $sidebar_icon_open_color;
+          background-color: $sidebar_icon_open_bg;
         }
       }
     }
@@ -52,46 +52,46 @@ $dropdown-bg: #e3e3e3;
     .vsm--link_level-1 {
       &.vsm--link_hover {
         .vsm--icon {
-          color: $mobile-icon-color;
-          background-color: $mobile-icon-bg;
+          color: $sidebar_mobile_icon_color;
+          background-color: $sidebar_mobile_icon_bg;
         }
       }
     }
   }
 
   .vsm--icon {
-    color: $icon-color;
+    color: $sidebar_icon_color;
   }
 
   .vsm--dropdown {
-    background-color: $dropdown-bg;
+    background-color: $sidebar_dropdown_bg;
     & .vsm--link {
-      color: $dropdown-color;
+      color: $sidebar_dropdown_color;
     }
     & .vsm--icon {
-      color: $dropdown-color;
+      color: $sidebar_dropdown_color;
     }
   }
 
   .vsm--mobile-bg {
-    background-color: $mobile-item-bg;
+    background-color: $sidebar_mobile_item_bg;
   }
 
   &.vsm_rtl {
     .vsm--link_level-1.vsm--link_active {
-      box-shadow: -3px 0px 0px 0px $primary-color inset;
+      box-shadow: -3px 0px 0px 0px $sidebar_primary_color inset;
     }
   }
 
   .vsm--header {
-    color: rgba($item-color, 0.7);
+    color: rgba($sidebar_item_color, 0.7);
   }
   .vsm--badge_default {
-    color: $item-color;
-    background-color: darken( $base-bg, 5% );
+    color: $sidebar_item_color;
+    background-color: darken( $sidebar_base_bg, 5% );
   }
   .vsm--toggle-btn {
-    color: $item-color;
-    background-color: darken( $base-bg, 5% );
+    color: $sidebar_item_color;
+    background-color: darken( $sidebar_base_bg, 5% );
   }
 }

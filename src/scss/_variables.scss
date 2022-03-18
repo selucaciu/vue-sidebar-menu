@@ -1,36 +1,36 @@
-$primary-color: #4285f4 !default;
-$base-bg: #2a2a2e !default;
+$sidebar_primary_color: #4285f4 !default;
+$sidebar_base_bg: #2a2a2e !default;
 
-$item-color: #fff !default;
+$sidebar_item_color: #fff !default;
 
-$item-active-color: null !default;
-$item-active-bg: null !default;
+$sidebar_item_active_color: null !default;
+$sidebar_item_active_bg: null !default;
 
-$item-open-color: #fff !default;
-$item-open-bg: $primary-color !default;
+$sidebar_item_open_color: #fff !default;
+$sidebar_item_open_bg: $sidebar_primary_color !default;
 
-$item-hover-color: null !default;
-$item-hover-bg: rgba(darken($base-bg, 5%), 0.5) !default;
+$sidebar_item_hover_color: null !default;
+$sidebar_item_hover_bg: rgba(darken($sidebar_base_bg, 5%), 0.5) !default;
 
-$icon-color: null !default;
-$icon-bg: darken( $base-bg, 5% ) !default;
+$sidebar_icon_color: null !default;
+$sidebar_icon_bg: darken( $sidebar_base_bg, 5% ) !default;
 
-$icon-active-color: null !default;
-$icon-active-bg: null !default;
+$sidebar_icon_active_color: null !default;
+$sidebar_icon_active_bg: null !default;
 
-$icon-open-color: null !default;
-$icon-open-bg: $item-open-bg !default;
+$sidebar_icon_open_color: null !default;
+$sidebar_icon_open_bg: $sidebar_item_open_bg !default;
 
-$mobile-item-color: #fff !default;
-$mobile-item-bg: $primary-color !default;
-$mobile-icon-color: $mobile-item-color !default;
-$mobile-icon-bg: $mobile-item-bg !default;
+$sidebar_mobile_item_color: #fff !default;
+$sidebar_mobile_item_bg: $sidebar_primary_color !default;
+$sidebar_mobile_icon_color: $sidebar_mobile_item_color !default;
+$sidebar_mobile_icon_bg: $sidebar_mobile_item_bg !default;
 
-$dropdown-bg: lighten( $base-bg, 5% ) !default;
-$dropdown-color: null !default;
+$sidebar_dropdown_bg: lighten( $sidebar_base_bg, 5% ) !default;
+$sidebar_dropdown_color: null !default;
 
-$item-font-size: 16px !default;
-$item-line-height: 30px !default;
-$item-padding: 10px 15px !default;
-$icon-height: 35px !default;
-$icon-width: 35px !default;
+$sidebar_item_font_size: 16px !default;
+$sidebar_item_line_height: 30px !default;
+$sidebar_item_padding: 10px 15px !default;
+$sidebar_icon_height: 35px !default;
+$sidebar_icon_width: 35px !default;
