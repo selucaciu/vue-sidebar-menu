@@ -1279,7 +1279,7 @@
 
       vue.watch(() => props.menu, () => {
         if (props.menu.length > 0 && currentActiveItem.value === null) {
-          const firstMenuItem = props.menu.find(item => item.type === 'item');
+          const firstMenuItem = props.menu.find(item => item.type === 'item' && !item.lazy);
           if (firstMenuItem) {
             currentActiveItem.value = firstMenuItem.index;
           }
